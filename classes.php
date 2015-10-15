@@ -56,18 +56,18 @@ function SQLMultiquery($sql){
 			if ($result = $mysqli->store_result()) {
 				while ($row = $result->fetch_row()) {
 					//Отладка
-					printf("%s\n", $row[0]);
+					//printf("%s\n", $row[0]);
 				}
 				$result->free();
 			}
 			/* печатаем разделитель */
 			if ($mysqli->more_results()) {
 				//Отладка
-				printf("-----------------\n");
+				//printf("-----------------\n");
 			}
 		} while ($mysqli->next_result());
 	}
-	var_dump($mysqli);
+	//var_dump($mysqli);
 	$mysqli->close();
 }
 class Instrument{
