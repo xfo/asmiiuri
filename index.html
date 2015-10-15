@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="cncToolMonitor">
+	<head>
+		<meta charset="utf-8">
+		<title>АС Мониторинга износа и учета режущего инструмента</title>
+		<link href="/css/flatly_bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="/css/style.css" media="all"/>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<base href="/">
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">
+						<img alt="Brand" src="img/app_logo.png">
+					</a>
+					<h1 class="navbar-left">АС Мониторинга износа и учета режущего инструмента</h1>
+				</div>
+				<a href="#" ng-controller="AppUserController" class="user navbar-right">{{user}}</a>
+			</div>
+		</nav>
+		<div class="container">
+			<ng-view></ng-view>
+		</div>	
+		<footer class="footer">
+			<div class="container"> 
+				<p>&copy; 2015 Данное приложение является частью дипломного проекта студента НЧ КФУ гр.2101176 Харисова Р.А.</p>
+			</div>
+		</footer>
+	</body>
+	<script src="js/angular.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/ui-bootstrap-custom-tpls-0.13.0.min.js"></script>
+    <script src="js/jquery.min.js"></script>	
+    <script src="js/highcharts.src.js"></script>
+    <script src="js/highcharts-ng.js"></script>
+	<script src="js/controllers.js"></script>
+</html>

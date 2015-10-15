@@ -1,0 +1,138 @@
+<div class="page-header">
+	<h2>Режущий инструмент {{tool_details.name}}</h2>
+</div>
+<div class="tool_resource" ng-controller="ToolResourceController">
+<h3>Запас ресурса режущего инструмента:</h3>
+<div class="progress">
+	<div class="progress-bar progress-bar-{{tool_resource.status}}" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: {{tool_resource.resource}}%">{{tool_resource.resource}}%</div>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-body">
+		<div ng-controller="toolWearChronology">
+			<highchart id="tool_wear_chronology" config="highchartsNG"></highchart>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">Дополнительная информация</div>
+	<div class="panel-body">
+		<a href="/tool_work/{{tool_id}}" class="btn-sm btn btn-default">График механической работы инструмента</a>
+		<a href="/tool_work_wear/{{tool_id}}" class="btn-sm btn btn-default">График зависимости "Работа / Износ"</a>
+	</div>
+</div>
+<br><br>
+<table class="revisiond_table table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Дата ревизии</th>
+			<th>№ Ячейки на складе</th>
+			<th>Износ по длине инструмента (Lи), мкм</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="revision in revisions">
+			<td>{{revision.timestamp*1000 | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+			<td>{{revision.box_stock_num}}</td>
+			<td>{{revision.parameter_value}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="tool_detail_table table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Параметр инструмента</th>
+			<th colspan="2">Значение</th>
+		</tr>
+	</thead>
+		<tr>
+			<td>Код инструмента</td>
+			<td colspan="2">{{tool_details.tool_id}}</td>
+		</tr>
+		<tr>
+			<td>Имя инструмента</td>
+			<td colspan="2">{{tool_details.name}}</td>
+		</tr>
+		<tr>
+			<td>Материал инструмента</td>
+			<td colspan="2">{{tool_details.material}}</td>
+		</tr>
+		<tr>
+			<td>Производитель</td>
+			<td colspan="2">{{tool_details.manufacturer_name}}</td>
+		</tr>
+		<tr>
+			<td>Поставщик</td>
+			<td colspan="2">{{tool_details.supplier_name}}</td>
+		</tr>
+		<tr>
+			<td>Тип инструмента</td>
+			<td colspan="2">{{tool_details.tool_type_name}}</td>
+		</tr>
+		<tr>
+			<td>Система закрепления</td>
+			<td>{{tool_details.holding_method}}</td>
+			<td><img ng-src="/img/tools/holding_method/{{tool_details.holding_method}}.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Форма пластины</td>
+			<td>{{tool_details.shape_type}}</td>
+			<td><img ng-src="/img/tools/shape_type/{{tool_details.shape_type}}.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Тип державки</td>
+			<td>{{tool_details.holder_type}}</td>
+			<td><img ng-src="/img/tools/holder_type/{{tool_details.holder_type}}.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Задний угол</td>
+			<td>{{tool_details.back_angle}}</td>
+			<td><img ng-src="/img/tools/back_angle/{{tool_details.back_angle}}.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Исполнение</td>
+			<td>{{tool_details.feed_direction}}</td>
+			<td><img ng-src="/img/tools/feed_direction/{{tool_details.feed_direction}}.png" alt="" /></td>
+		</tr>
+		<tr>
+			<td>Высота державки, h мм</td>
+			<td colspan="2">{{tool_details.holder_heigth}}</td>
+		</tr>
+		<tr>
+			<td>Ширина державки, b мм</td>
+			<td colspan="2">{{tool_details.holder_width}}</td>
+		</tr>
+		<tr>
+			<td>Длина, l1 мм</td>
+			<td colspan="2">{{tool_details.tool_length}}</td>
+		</tr>
+		<tr>
+			<td>Длина режущей кромки, l мм</td>
+			<td colspan="2">{{tool_details.blade_edge_length}}</td>
+		</tr>
+		<tr>
+			<td>Максимально допустимый износ по задней поверхности (h<sub>з</sub>), мм</td>
+			<td colspan="2">{{tool_details.max_back_edge_wear}}</td>
+		</tr>
+		<tr>
+			<td>Максимально допустимый износ по передней поверхности (Глублина лунки h<sub>л</sub>), мм</td>
+			<td colspan="2">{{tool_details.max_front_edge_wear_hl}}</td>
+		</tr>
+		<tr>
+			<td>Максимально допустимый износ по передней поверхности (Ширина лунки l<sub>л</sub>), мм</td>
+			<td colspan="2">{{tool_details.max_front_edge_wear_ll}}</td>
+		</tr>
+		<tr>
+			<td>Максимально допустимый износ по передней поверхности (Глублина лунки h<sub>л</sub>), мм</td>
+			<td colspan="2">{{tool_details.max_front_edge_wear_hl}}</td>
+		</tr>
+		<tr>
+			<td>Максимально допустимый износ по радиусу закругления режущей кромки (R<sub>з</sub>), мм</td>
+			<td colspan="2">{{tool_details.max_radius_edge_wear}}</td>
+		</tr>
+		<tr>
+			<td>Максимально допустимый износ по длине инструмента (l<sub>и</sub>), мм</td>
+			<td colspan="2">{{tool_details.max_length_wear}}</td>
+		</tr>
+	</tbody>
+</table>

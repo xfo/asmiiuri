@@ -1,0 +1,32 @@
+<div class="page-header">
+	<h2>Проведение ревизии инструмента</h2>
+</div>
+<form ng-submit="addNewRevision();">
+	<div class="form-group">
+		<label>Номер ячейки на складе:</label>
+		<input class="form-control" type="text" name="box_stock_num" placeholder="Номер ячейки на складе" ng-model="box_stock_num">
+	</div>
+	<div class="form-group">
+		<label>Износ по длине инструмента (Lи), мкм:</label>
+		<input class="form-control" type="text" name="parameter_value" placeholder="Износ по длине инструмента" ng-model="parameter_value">
+	</div>
+	<input type="submit" value="Добавить ревизию инструмента" class="btn btn-primary">
+</form>
+<br>
+<br>
+<div class="panel panel-default">
+	<div class="panel-heading">Добавить информацию о работе инструмента (эмуляция работы станка с ЧПУ)</div>
+	<div class="panel-body">
+		<form ng-submit="addNewWork();">
+			<div class="form-group">
+				<label>Пройденный инструментом путь S (м):</label>
+				<input class="form-control" type="text" name="s" ng-model="s">
+			</div>
+			<div class="form-group">
+				<label>Равнодействующая сила R (Н):</label>
+				<input class="form-control" type="text" name="r" ng-model="r">
+			</div>
+			<input type="submit" value="Добавить работу" class="btn btn-primary">
+		</form>
+	</div>
+</div>

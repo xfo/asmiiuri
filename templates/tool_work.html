@@ -1,0 +1,28 @@
+<div class="page-header">
+	<h2>Совершенная работа режущего инструмента {{tool_work.name}}</h2>
+</div>
+<div class="panel panel-primary">
+	<div class="panel-body">
+		<div>
+			<highchart id="tool_work_chronology" config="tool_work_chart"></highchart>
+		</div>
+	</div>
+</div>
+<a href="/tool_detail/{{tool_id}}" class="btn-sm btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Вернуться назад</a>
+<h3>Журнал совершенной работы инструмента</h3>
+<table class="tool-work-table table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Дата</th>
+			<th>Совершенная работа (Дж)</th>
+			<th>Суммарная работа (Дж)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="work in tool_work.work">
+			<td>{{work.timestamp*1000 | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+			<td>{{work.work}}</td>
+			<td>{{work.work_sum}}</td>
+		</tr>
+	</tbody>
+</table>

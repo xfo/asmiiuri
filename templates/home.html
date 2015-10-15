@@ -1,0 +1,59 @@
+<div class="page-header">
+	<h2>Весь инструмент</h2>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<a href="/add_new_tool" class="btn btn-primary">
+			<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;
+			<span>Добавить новый инструмент</span>
+		</a>
+	</div>
+	<div class="col-md-4 col-md-offset-4">
+		<input type="text" class="form-control" placeholder="Поиск инструмента" ng-model="tool_search">
+	</div>
+</div>
+<br>
+<div ng-repeat="tool in cnc_tools">
+	<div ng-if="tool.resource.resource < 20">
+		<div class="alert alert-danger" role="alert">Внимание! Запас ресурса режущего инструмента {{tool.name}} достиг отметки в {{tool.resource.resource}}%!</div>
+	</div>
+</div>
+<table class="home-table table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>№</th>
+			<th>Название</th>
+			<th>Тип инструмента</th>
+			<th>Производитель</th>
+			<th>Поставщик</th>
+			<th>Запас ресурса</th>
+			<th colspan="2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="cnc_tool in cnc_tools | filter:tool_search">
+			<td>{{cnc_tool.tool_id}}</td>
+			<td>{{cnc_tool.name}}</a></td>
+			<td>{{cnc_tool.tool_type_name}}</td>
+			<td>{{cnc_tool.manufacturer_name}}</td>
+			<td>{{cnc_tool.supplier_name}}</td>
+
+			<td class="tool_resource_bar">
+				<div class="progress">
+					<div class="progress-bar progress-bar-{{cnc_tool.resource.status}}" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: {{cnc_tool.resource.resource}}%">{{cnc_tool.resource.resource}}%</div>
+				</div>
+			</td>
+
+			<td>
+				<a class="btn btn-primary btn-sm" href="/add_new_revision/{{cnc_tool.tool_id}}">
+					<span class="glyphicon glyphicon-text-height"></span>
+				</a>
+			</td>
+			<td>
+				<a class="btn btn-info btn-sm" href="/tool_detail/{{cnc_tool.tool_id}}">
+					<span class="glyphicon glyphicon-eye-open"></span>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

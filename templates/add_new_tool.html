@@ -1,0 +1,332 @@
+<div class="page-header">
+	<h2>Добавление нового инструмента</h2>
+</div>
+<form id="new_instrument_form" ng-submit="addNewInstrument();">
+	<div class="form-group">
+		<label>Название инструмента:</label>
+		<input class="form-control"  type="text" name="instrument_name" placeholder="Название" ng-model="instrument_name">
+	</div>
+	
+	<div class="form-group">
+		<label>Тип инструмента:</label>
+		<select class="form-control"  name="instrument_type" ng-model="instrument_type">
+<option ng-repeat="instrument_type in instrument_types" value="{{instrument_type.tool_type_id}}">{{instrument_type.name}}</option>
+		</select>
+	</div>
+	
+	<div class="form-group">
+		<label>Материал инструмента:</label>
+		<select class="form-control"  name="instrument_material" ng-model="instrument_material">
+<option ng-repeat="instrument_matherial in instrument_matherials" value="{{instrument_matherial}}">{{instrument_matherial}}</option>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label>Производитель инструмента:</label>
+		<select class="form-control"  name="instrument_manufacturer" ng-model="instrument_manufacturer">
+<option ng-repeat="instrument_manufacturer in instrument_manufacturers" value="{{instrument_manufacturer.manufacturer_id}}">{{instrument_manufacturer.name}}</option>
+		</select>
+	</div>
+	
+	<div class="form-group">
+		<label>Поставщик инструмента:</label>
+		<select class="form-control"  name="instrument_supplier" ng-model="instrument_supplier">
+<option ng-repeat="instrument_supplier in instrument_suppliers" value="{{instrument_supplier.supplier_id}}">{{instrument_supplier.name}}</option>
+		</select>
+	</div>
+
+	<table class="table table-bordered holding_method_table">
+		<tr>
+			<td colspan="5">
+				<label class="control-label">Система закрепления:</label>
+				<input style="text-transform: capitalize" class="form-control" name="holding_method" value="{{holding_method}}" type="text" ng-model="holding_method" ng-init="holding_method='c'">		
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="holding_method='c'">
+				<img src="/img/tools/holding_method/c.png" alt="">
+				<strong>C</strong>
+				<p>Прижим сверху</p>
+			</td>
+			<td ng-click="holding_method='d'">
+				<img src="img/tools/holding_method/d.png" alt="">		
+				<strong>D</strong>
+				<p>Прижим повышенной жесткости</p>
+			</td>
+			<td ng-click="holding_method='m'">
+				<img src="img/tools/holding_method/m.png" alt="">				
+				<strong>M</strong>
+				<p>Прижим клин-прихватом сверху</p>
+			</td>
+			<td ng-click="holding_method='p'">
+				<img src="img/tools/holding_method/p.png" alt="">				
+				<strong>P</strong>
+				<p>Прижим рычагом за отверстие</p>
+			</td>
+			<td ng-click="holding_method='s'">
+				<img src="img/tools/holding_method/s.png" alt="">				
+				<strong>S</strong>
+				<p>Закрепление пластин винтом</p>
+			</td>
+		</tr>
+	</table>
+	
+	<table class="table table-bordered shape_type_table">
+		<tr>
+			<td colspan="4">
+				<label class="control-label">Форма пластины:</label>
+				<input style="text-transform: capitalize" class="form-control" name="shape_type" value="{{shape_type}}" type="text" ng-model="shape_type" ng-init="shape_type='c'">		
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="shape_type='c'">
+				<img src="/img/tools/shape_type/c.png" alt="">
+				<strong>C</strong>
+			</td>
+			<td ng-click="shape_type='d'">
+				<img src="/img/tools/shape_type/d.png" alt="">
+				<strong>D</strong>
+			</td>
+			<td ng-click="shape_type='k'">
+				<img src="/img/tools/shape_type/k.png" alt="">
+				<strong>K</strong>
+			</td>
+			<td ng-click="shape_type='r'">
+				<img src="/img/tools/shape_type/r.png" alt="">
+				<strong>R</strong>
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="shape_type='s'">
+				<img src="/img/tools/shape_type/s.png" alt="">
+				<strong>S</strong>
+			</td>
+			<td ng-click="shape_type='t'">
+				<img src="/img/tools/shape_type/t.png" alt="">
+				<strong>T</strong>
+			</td>
+			<td ng-click="shape_type='v'">
+				<img src="/img/tools/shape_type/v.png" alt="">
+				<strong>V</strong>
+			</td>
+			<td ng-click="shape_type='w'">
+				<img src="/img/tools/shape_type/w.png" alt="">
+				<strong>W</strong>
+			</td>
+		</tr>
+	</table>
+	
+	<table class="table table-bordered holder_type_table">
+		<tr>
+			<td colspan="7">
+				<label class="control-label">Тип державки:</label>
+				<input style="text-transform: capitalize" class="form-control" name="holder_type" value="{{holder_type}}" type="text" ng-model="holder_type" ng-init="holder_type='a'">		
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="holder_type='a'">
+				<img src="/img/tools/holder_type/a.png" alt="">
+				<strong>A</strong>
+			</td>
+			<td ng-click="holder_type='b'">
+				<img src="/img/tools/holder_type/b.png" alt="">
+				<strong>B</strong>
+			</td>
+			<td ng-click="holder_type='d'">
+				<img src="/img/tools/holder_type/d.png" alt="">
+				<strong>D</strong>
+			</td>
+			<td ng-click="holder_type='e'">
+				<img src="/img/tools/holder_type/e.png" alt="">
+				<strong>E</strong>
+			</td>
+			<td ng-click="holder_type='f'">
+				<img src="/img/tools/holder_type/f.png" alt="">
+				<strong>F</strong>
+			</td>
+			<td ng-click="holder_type='g'">
+				<img src="/img/tools/holder_type/g.png" alt="">
+				<strong>G</strong>
+			</td>
+			<td ng-click="holder_type='h'">
+				<img src="/img/tools/holder_type/h.png" alt="">
+				<strong>H</strong>
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="holder_type='j'">
+				<img src="/img/tools/holder_type/j.png" alt="">
+				<strong>J</strong>
+			</td>
+			<td ng-click="holder_type='k'">
+				<img src="/img/tools/holder_type/k.png" alt="">
+				<strong>K</strong>
+			</td>
+			<td ng-click="holder_type='l'">
+				<img src="/img/tools/holder_type/l.png" alt="">
+				<strong>L</strong>
+			</td>
+			<td ng-click="holder_type='m'">
+				<img src="/img/tools/holder_type/m.png" alt="">
+				<strong>M</strong>
+			</td>
+			<td ng-click="holder_type='n'">
+				<img src="/img/tools/holder_type/n.png" alt="">
+				<strong>N</strong>
+			</td>
+			<td ng-click="holder_type='q'">
+				<img src="/img/tools/holder_type/q.png" alt="">
+				<strong>Q</strong>
+			</td>
+			<td ng-click="holder_type='r'">
+				<img src="/img/tools/holder_type/r.png" alt="">
+				<strong>R</strong>
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="holder_type='s'">
+				<img src="/img/tools/holder_type/s.png" alt="">
+				<strong>S</strong>
+			</td>
+			<td ng-click="holder_type='t'">
+				<img src="/img/tools/holder_type/t.png" alt="">
+				<strong>T</strong>
+			</td>
+			<td ng-click="holder_type='u'">
+				<img src="/img/tools/holder_type/u.png" alt="">
+				<strong>U</strong>
+			</td>
+			<td ng-click="holder_type='v'">
+				<img src="/img/tools/holder_type/v.png" alt="">
+				<strong>V</strong>
+			</td>
+			<td ng-click="holder_type='y(x)'">
+				<img src="/img/tools/holder_type/y(x).png" alt="">
+				<strong>Y(X)</strong>
+			</td>
+			<td ng-click="holder_type='y(z)'">
+				<img src="/img/tools/holder_type/y(z).png" alt="">
+				<strong>Y(Z)</strong>
+			</td>
+			<td ng-click="holder_type='p'">
+				<img src="/img/tools/holder_type/p.png" alt="">
+				<strong>P</strong>
+			</td>
+		</tr>
+	</table>
+	<table class="table table-bordered common_params_table">
+		<tr>
+			<td colspan="2">
+				<label class="control-label">Задний угол:</label>
+				<input style="text-transform: capitalize" class="form-control" name="back_angle" value="{{back_angle}}" type="text" ng-model="back_angle" ng-init="back_angle='b'">		
+			</td>
+			<td colspan="2">
+				<label class="control-label">Исполнение:</label>
+				<input style="text-transform: capitalize" class="form-control" name="feed_direction" value="{{feed_direction}}" type="text" ng-model="feed_direction" ng-init="feed_direction='r'">		
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="back_angle='b'">
+				<img src="/img/tools/back_angle/b.png" alt="">
+				<strong>B</strong>
+			</td>
+			<td ng-click="back_angle='c'">
+				<img src="/img/tools/back_angle/c.png" alt="">
+				<strong>C</strong>
+			</td>			
+			<td colspan="2" ng-click="feed_direction='r'">
+				<img src="/img/tools/feed_direction/r.png" alt="">
+				<strong>Правое</strong>
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="back_angle='e'">
+				<img src="/img/tools/back_angle/e.png" alt="">
+				<strong>E</strong>
+			</td>
+			<td ng-click="back_angle='n'">
+				<img src="/img/tools/back_angle/n.png" alt="">
+				<strong>N</strong>
+			</td>			
+			<td colspan="2" ng-click="feed_direction='l'">
+				<img src="/img/tools/feed_direction/l.png" alt="">
+				<strong>Левое</strong>
+			</td>
+		</tr>
+		<tr>
+			<td ng-click="back_angle='e'">
+				<img src="/img/tools/back_angle/e.png" alt="">
+				<strong>E</strong>
+			</td>
+			<td></td>
+			<td colspan="2" ng-click="feed_direction='n'">
+				<img src="/img/tools/feed_direction/n.png" alt="">
+				<strong>Нейтральное</strong>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><label class="control-label">Высота державки, h мм:</label></td>
+			<td colspan="2"><label class="control-label">Ширина державки, b мм:</label></td>
+		</tr>
+		<tr>
+			<td width="100px"><img src="/img/tools/common_params/holder_heigth.png" alt=""></td>
+			<td>
+				<input style="text-transform: capitalize" class="form-control" name="holder_heigth" value="{{holder_heigth}}" type="text" ng-model="holder_heigth" ng-init="holder_heigth='05'">
+			</td>
+			<td width="100px"><img src="/img/tools/common_params/holder_width.png" alt=""></td>
+			<td>
+				<input style="text-transform: capitalize" class="form-control" name="holder_width" value="{{holder_width}}" type="text" ng-model="holder_width" ng-init="holder_width='05'">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><label class="control-label">Длина, l<sub>1</sub> мм:</label></td>
+			<td colspan="2"><label class="control-label">Длина режущей кромки, l мм:</label></td>
+		</tr>
+		<tr>
+			<td width="100px"><img src="/img/tools/common_params/tool_length.png" alt=""></td>
+			<td>
+				<input style="text-transform: capitalize" class="form-control" name="tool_length" value="{{tool_length}}" type="text" ng-model="tool_length" ng-init="tool_length='05'">
+			</td>
+			<td width="100px"><img src="/img/tools/common_params/blade_edge_length.png" alt=""></td>
+			<td>
+				<input style="text-transform: capitalize" class="form-control" name="blade_edge_length" value="{{blade_edge_length}}" type="text" ng-model="blade_edge_length" ng-init="blade_edge_length='05'">
+			</td>
+		</tr>
+	</table>
+	
+	<table class="table table-bordered tool_wear_criterion_table">
+		<tr>
+			<td colspan="5">
+				<label class="control-label">Критерии износа:</label>
+				<p>Укажите значения критериев, соответствующие максимально допустимому износу, если параметр не будет контролироваться, введите 0</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="50%">
+				<label class="control-label">Износ по задней поверхности (h<sub>з</sub>), мм:</label>
+				<input style="text-transform: capitalize" class="form-control" name="max_back_edge_wear" value="{{max_back_edge_wear}}" type="text" ng-model="max_back_edge_wear" ng-init="max_back_edge_wear='0'">
+				<br>
+				<label class="control-label">Износ по передней поверхности (Глублина лунки h<sub>л</sub>), мм:</label>
+				<input style="text-transform: capitalize" class="form-control" name="max_front_edge_wear_hl" value="{{max_front_edge_wear_hl}}" type="text" ng-model="max_front_edge_wear_hl" ng-init="max_front_edge_wear_hl='0'">
+				<br>
+				<label class="control-label">Износ по передней поверхности (Ширина лунки l<sub>л</sub>), мм:</label>
+				<input style="text-transform: capitalize" class="form-control" name="max_front_edge_wear_ll" value="{{max_front_edge_wear_ll}}" type="text" ng-model="max_front_edge_wear_ll" ng-init="max_front_edge_wear_ll='0'">
+			</td>
+			<td colspan="2">
+				<label class="control-label">Радиус закругления режущей кромки (R<sub>з</sub>), мм:</label>
+				<input style="text-transform: capitalize" class="form-control" name="max_radius_edge_wear" value="{{max_radius_edge_wear}}" type="text" ng-model="max_radius_edge_wear" ng-init="max_radius_edge_wear='0'">	
+				<br>
+				<label class="control-label">Износ по длине инструмента (l<sub>и</sub>), мм:</label>
+				<input style="text-transform: capitalize" class="form-control" name="max_length_wear" value="{{max_length_wear}}" type="text" ng-model="max_length_wear" ng-init="max_length_wear='0'">		
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5" align="center">
+				<img width="40%" src="/img/tools/common_params/tool_wear_criterion.png" alt="">
+				<img width="40%" src="/img/tools/common_params/tool_wear_criterion2.png" alt="">
+			</td>
+		</tr>
+	</table>
+
+	<input type="submit" value="Добавить инструмент" class="btn btn-primary">
+</form>
